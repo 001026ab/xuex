@@ -1,0 +1,61 @@
+server:
+  port: 18084
+
+spring:
+  application:
+    name: nacos-nginx-test
+  profiles:
+    active: dev-2
+  cloud:
+    nacos:
+      discovery:
+        #??????
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+      config:
+        #??????
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+  main:
+    allow-bean-definition-overriding: true
+
+
+  #docker?????
+  #???
+  datasource:
+    url: jdbc:mysql://192.168.126.133:3306/docker?useSSL=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  #mybatis??
+  #mybatis:
+  #typeAliasesPackage: com.example.springboot.mybatisxml.entity
+  #mapperLocations: classpath:mapper/*.xml
+  #config-location: classpath:mybatis-config.xml
+
+## mybatis-plus
+mybatis-plus:
+  configuration:
+    #????
+    map-underscore-to-camel-case: true
+    #??sql????
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+  mapper-locations: /mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  #type-aliases-package: com.example.test.entity
+
+## ??dao ??sql??
+logging:
+  level:
+    com:
+      example:
+        springboot:
+          dao: debug
+

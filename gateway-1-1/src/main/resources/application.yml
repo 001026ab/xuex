@@ -1,0 +1,37 @@
+server:
+  # ??
+  port: 18080
+
+spring:
+  application:
+    name: nacos-nginx-gateway-1
+  cloud:
+    nacos:
+      discovery:
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          # Gateway开启服务注册和发现功能
+          enabled: true
+          # 将请求路径上的服务名配置为小写
+          #lowerCaseServiceId: true
+      routes:
+        - id: nacos-nginx-prod-1
+          uri: lb://nacos-nginx-prod-1
+          predicates:
+            - Path=/ms/prod1/**
+          filters:
+            - StripPrefix=2
+            #- SwaggerHeaderFilter
+        - id: nacos-nginx-connect-1
+          uri: lb://nacos-nginx-connect-1
+          predicates:
+            - Path=/ms/connect/**
+          filters:
+            - StripPrefix=2
+            #- SwaggerHeaderFilter
+
+check:
+  token: "false"

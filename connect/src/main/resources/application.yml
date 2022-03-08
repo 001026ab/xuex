@@ -1,0 +1,28 @@
+server:
+  port: 18081
+
+spring:
+  application:
+    name: nacos-nginx-connect-1
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+      #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+      config:
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+
+ws:
+  port: 19000
+
+  #18081
+  #netty:
+  # port: 8090    #监听端口
+  # bossThread: 2 #线程数
+  # workerThread: 2 #线程数
+  #keepalive: true #保持连接
+  # backlog: 100

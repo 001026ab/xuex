@@ -1,0 +1,25 @@
+server:
+  port: 18088
+spring:
+  application:
+    name: nacos-nginx-prod-auth
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://192.168.126.133:3306/docker?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        #??????
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+      config:
+        #??????
+        #server-addr: 192.168.126.133:8848
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+  main:
+    allow-bean-definition-overriding: true

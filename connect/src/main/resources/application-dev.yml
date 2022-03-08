@@ -1,0 +1,10 @@
+mqtt:
+  server:
+    auth-username: admin
+    auth-password: public
+    name: xnest-mqtt-server
+    debug: true
+    heartbeat-timeout: 300000
+    websocket-enable: false
+    max-client-id-length: 64
+    max-bytes-in-message: 32768
